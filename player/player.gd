@@ -4,6 +4,11 @@ var direction = Vector2(0,0)
 
 export(float) var velocity = 3.0
 
+var force = Vector2()
+
+func is_player() -> bool:
+	return true
+
 func _physics_process(delta):
 
 	direction = Vector2()
@@ -21,4 +26,5 @@ func _physics_process(delta):
 		direction += Vector2.RIGHT
 
 
+	direction += force
 	move_and_collide(direction.normalized() * velocity * delta)
