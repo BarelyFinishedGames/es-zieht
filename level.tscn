@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://stream/stream.tscn" type="PackedScene" id=2]
+[ext_resource path="res://box/box.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 65.6275, 291.908 )
 
-[node name="Stream" parent="." instance=ExtResource( 2 )]
-position = Vector2( 276.855, 273.125 )
-
 [node name="Stream2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 364, 478 )
-rotation = -2.21184
+position = Vector2( 365.081, 490.978 )
+rotation = 1.5708
 scale = Vector2( 1.87941, 2.20813 )
+
+[node name="Box" parent="." instance=ExtResource( 3 )]
+position = Vector2( 214.202, 171.888 )
+
+[node name="Stream" parent="." instance=ExtResource( 2 )]
+position = Vector2( 210.206, 212.095 )
