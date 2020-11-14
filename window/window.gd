@@ -2,8 +2,6 @@ extends Node2D
 
 export(bool) var open = true
 
-var color_open = Color(0,255,0)
-var color_closed = Color(255,0,0)
 
 export(int) var angle_open = -90
 
@@ -14,7 +12,7 @@ onready var stream_end_collider = $Stream/end/StaticBody2D/CollisionShape2D
 
 func _ready():
 	$Stream.enabled = open
-	$origin/trigger/Polygon2D.color = color_open if open else color_closed
+
 
 	$origin.rotation_degrees = angle_open
 	
@@ -33,13 +31,13 @@ func _process(delta):
 		var player = get_parent().get_node("Player")
 		if open:
 			$Stream._on_Area2D_body_entered(player)
-			$origin/trigger/Polygon2D.color = color_open
+
 
 			rotate(angle_open)
 
 		else:
 			player.force = Vector2(0,0)
-			$origin/trigger/Polygon2D.color = color_closed
+
 
 			rotate(0)
 
