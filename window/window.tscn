@@ -40,4 +40,5 @@ shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="body_entered" from="origin/trigger" to="." method="_on_trigger_body_entered"]
+[connection signal="body_exited" from="origin/trigger" to="." method="_on_trigger_body_exited"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
