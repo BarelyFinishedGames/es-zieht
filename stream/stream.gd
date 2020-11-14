@@ -9,6 +9,8 @@ onready var originalEndPosition = $end.position
 
 export(float) var power = 2
 
+export(bool) var enabled = true
+
 func _physics_process(delta):
 
 	if ray.is_colliding():
@@ -41,7 +43,7 @@ func reset():
 	
 
 func _on_Area2D_body_entered(other):
-	if other.has_method("is_player"):
+	if enabled and other.has_method("is_player"):
 		other.force += direction * power
 
 func _on_Area2D_body_exited(other):

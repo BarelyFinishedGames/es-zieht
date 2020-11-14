@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://stream/stream.tscn" type="PackedScene" id=1]
+[ext_resource path="res://window/window.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40, 5 )
+
+[node name="Window" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Stream" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 120 )
+
+[node name="origin" type="Position2D" parent="."]
+position = Vector2( 40, 10 )
+
+[node name="trigger" type="Area2D" parent="origin"]
+position = Vector2( -40, -0.25 )
+
+[node name="Polygon2D" type="Polygon2D" parent="origin/trigger"]
+color = Color( 0, 1, 0.0627451, 1 )
+polygon = PoolVector2Array( -40, 0, 40, 0, 40, 20, -40, 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="origin/trigger"]
+position = Vector2( 0, 10 )
+shape = SubResource( 1 )
+
+[node name="noyoucantwalkhere" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="noyoucantwalkhere"]
+position = Vector2( 0, 5 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="body_entered" from="origin/trigger" to="." method="_on_trigger_body_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
