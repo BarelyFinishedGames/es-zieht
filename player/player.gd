@@ -25,6 +25,15 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		direction += Vector2.RIGHT
 
-
+	if direction.length() != 0:
+		$Sprite.play("run")
+		$Sprite.rotation_degrees = get_degrees(direction)
+		$CollisionShape2D.rotation_degrees = get_degrees(direction)
+	else:
+		$Sprite.stop()
+	
 	direction += force
 	move_and_collide(direction.normalized() * velocity * delta)
+	
+func get_degrees(vector) -> float:
+	return atan2(vector.y, vector.x)*180/PI
