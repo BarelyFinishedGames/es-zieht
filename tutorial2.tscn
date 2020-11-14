@@ -1,16 +1,16 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
+[ext_resource path="res://window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://box/box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://stream/stream.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=29]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 70.7588, 8 )
 
-[sub_resource type="RectangleShape2D" id=30]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.84482, 96 )
 
-[sub_resource type="RectangleShape2D" id=31]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.84485, 96 )
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -19,13 +19,13 @@ extents = Vector2( 185.742, 8 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 79.6037, 8 )
 
-[sub_resource type="RectangleShape2D" id=32]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 79.6037, 8 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 88.4485, 8 )
 
-[sub_resource type="RectangleShape2D" id=33]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 53.0692, 80.0001 )
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -34,13 +34,13 @@ extents = Vector2( 61.9139, 16.0001 )
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 159.207, 8 )
 
-[sub_resource type="RectangleShape2D" id=34]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 114.983, 8 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 212.276, 8 )
 
-[sub_resource type="RectangleShape2D" id=35]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 123.828, 16 )
 
 [sub_resource type="RectangleShape2D" id=14]
@@ -49,7 +49,7 @@ extents = Vector2( 17.6897, 48 )
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 17.6897, 88 )
 
-[sub_resource type="RectangleShape2D" id=36]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 8.84473, 88 )
 
 [sub_resource type="RectangleShape2D" id=17]
@@ -88,58 +88,6 @@ extents = Vector2( 53.069, 48 )
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 8.84486, 96 )
 
-[sub_resource type="GDScript" id=37]
-script/source = "extends Node2D
-
-onready var ray = $begin/BoxDetector
-onready var areaShape = $Area2D/CollisionShape2D
-onready var direction = ($end.get_global_position() - $begin.get_global_position()).normalized()
-
-onready var originalEndPosition = $end.position
-
-
-export(float) var power = 2
-
-func _physics_process(delta):
-
-	if ray.is_colliding():
-		var other = ray.get_collider() as Node2D
-		if other.has_method(\"is_box\"):
-
-			var pos = ray.get_collision_point()
-			$end.global_position = pos
-
-			var length = ($end.position - $begin.position).length()
-			var oldExtents = areaShape.shape.get_extents()
-
-			areaShape.shape.set_extents(Vector2(oldExtents.x,length / 2))
-			areaShape.position.y -= oldExtents.y - length / 2
-
-		else:
-			reset()
-
-	else:
-		reset()
-
-func reset():
-	$end.position = originalEndPosition
-
-	var length = ($end.position - $begin.position).length()
-	var oldExtents = areaShape.shape.get_extents()
-
-	areaShape.shape.set_extents(Vector2(oldExtents.x,length / 2))
-	areaShape.position.y += length / 2 - oldExtents.y
-	
-
-func _on_Area2D_body_entered(other):
-	if other.has_method(\"is_player\"):
-		other.force += direction * power
-
-func _on_Area2D_body_exited(other):
-	if other.has_method(\"is_player\"):
-		other.force = Vector2()
-"
-
 [node name="Node2D" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -147,17 +95,17 @@ func _on_Area2D_body_exited(other):
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 144, 200 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 29 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 200, 96 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 30 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 440, 96 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 31 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 600, 200 )
@@ -172,7 +120,7 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 824, 632 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 32 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 160, 888 )
@@ -182,7 +130,7 @@ shape = SubResource( 7 )
 [node name="CollisionShape2D22" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 608, 704 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 33 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 504, 640 )
@@ -197,7 +145,7 @@ shape = SubResource( 10 )
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 344, 760 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 34 )
+shape = SubResource( 11 )
 
 [node name="CollisionShape2D24" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 256, 648 )
@@ -207,7 +155,7 @@ shape = SubResource( 12 )
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 544, 320 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 35 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 320, 160 )
@@ -222,7 +170,7 @@ shape = SubResource( 15 )
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 760, 296 )
 scale = Vector2( 0.904481, 1 )
-shape = SubResource( 36 )
+shape = SubResource( 16 )
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 456, 568 )
@@ -285,23 +233,60 @@ scale = Vector2( 0.904481, 1 )
 shape = SubResource( 28 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 592, 264 )
+position = Vector2( 264, 248 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 
-[node name="Box" parent="." instance=ExtResource( 3 )]
-position = Vector2( 712, 456 )
-scale = Vector2( 1.3, 1.2 )
+[node name="Window" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, 0 )
+scale = Vector2( 0.8, 1 )
+angle_open = 90
 
-[node name="Stream" parent="." instance=ExtResource( 4 )]
-position = Vector2( 384, 216 )
+[node name="Stream" parent="Window" index="0"]
+position = Vector2( 0, 200 )
 scale = Vector2( 1, 2 )
-script = SubResource( 37 )
 
-[node name="Stream2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 632, 576 )
+[node name="origin" parent="Window" index="1"]
+position = Vector2( -40, 8 )
+
+[node name="trigger" parent="Window/origin" index="0"]
+position = Vector2( 40, 0 )
+scale = Vector2( 1, 0.5 )
+
+[node name="Box" parent="." instance=ExtResource( 3 )]
+position = Vector2( 520, 480 )
+
+[node name="Window2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 448, 576 )
 rotation = -1.5708
+scale = Vector2( 0.8, 1 )
+angle_open = 90
+
+[node name="Stream" parent="Window2" index="0"]
+position = Vector2( 0, 170.53 )
 scale = Vector2( 1, 1.7 )
 
-[editable path="Box"]
+[node name="origin" parent="Window2" index="1"]
+position = Vector2( -40, 8 )
+
+[node name="trigger" parent="Window2/origin" index="0"]
+position = Vector2( 40, 0 )
+scale = Vector2( 1, 0.5 )
+
+[node name="Window3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 576, 704 )
+rotation = 1.5708
+scale = Vector2( 0.8, 1 )
+
+[node name="Stream" parent="Window3" index="0"]
+scale = Vector2( 1, 1.2 )
+
+[node name="trigger" parent="Window3/origin" index="0"]
+scale = Vector2( 1, 0.4 )
+
+[editable path="Window"]
+
+[editable path="Window2"]
+
+[editable path="Window3"]
