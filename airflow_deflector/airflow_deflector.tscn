@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://box/box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://airflow_deflector/airflow_deflector.gd" type="Script" id=2]
+
+[node name="AirflowDeflector" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Direction" type="RayCast2D" parent="." index="1"]
+position = Vector2( 0, 25 )
+cast_to = Vector2( 0, 25 )
