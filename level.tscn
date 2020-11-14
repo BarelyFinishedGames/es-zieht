@@ -9,13 +9,13 @@
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 65.6275, 291.908 )
 
-[node name="Stream" parent="." instance=ExtResource( 2 )]
-position = Vector2( 697.462, 133.276 )
-
 [node name="Stream2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 784.607, 338.151 )
-rotation = -2.21184
+position = Vector2( 365.081, 490.978 )
+rotation = 1.5708
 scale = Vector2( 1.87941, 2.20813 )
 
 [node name="Box" parent="." instance=ExtResource( 3 )]
-position = Vector2( 212.224, 258.319 )
+position = Vector2( 214.202, 171.888 )
+
+[node name="Stream" parent="." instance=ExtResource( 2 )]
+position = Vector2( 210.206, 212.095 )
