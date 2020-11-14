@@ -31,14 +31,13 @@ func _process(delta):
 		if open:
 			$Stream._on_Area2D_body_entered(player)
 			$origin/trigger/Polygon2D.color = color_open
-			print("window opened")
 
 			rotate(angle_open)
 
 		else:
 			player.force = Vector2(0,0)
 			$origin/trigger/Polygon2D.color = color_closed
-			print("window closed")
+
 			rotate(0)
 
 func rotate(new):
