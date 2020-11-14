@@ -9,6 +9,7 @@
 [node name="CameraArea3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 89.135, 654.217 )
 scale = Vector2( 12.413, 6.28661 )
+camera_crane = NodePath("../CameraCrane")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -16,10 +17,12 @@ current = true
 [node name="CameraArea2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 844.545, 342.413 )
 scale = Vector2( 6.33544, 7.07657 )
+camera_crane = NodePath("../CameraCrane")
 
 [node name="CameraArea" parent="." instance=ExtResource( 3 )]
 position = Vector2( 183.6, 117.053 )
 scale = Vector2( 10.0554, 7.07657 )
+camera_crane = NodePath("../CameraCrane")
 
 [node name="CameraCrane" parent="." instance=ExtResource( 2 )]
 camera_node = NodePath("../Camera2D")
