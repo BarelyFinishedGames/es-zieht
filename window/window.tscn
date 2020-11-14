@@ -10,6 +10,7 @@ extents = Vector2( 40, 10 )
 extents = Vector2( 40, 5 )
 
 [node name="Window" type="Node2D"]
+scale = Vector2( 2.5, 2.5 )
 script = ExtResource( 2 )
 
 [node name="Stream" parent="." instance=ExtResource( 1 )]
@@ -20,6 +21,7 @@ position = Vector2( 40, 10 )
 
 [node name="trigger" type="Area2D" parent="origin"]
 position = Vector2( -40, -0.25 )
+scale = Vector2( 1, 0.6 )
 
 [node name="Polygon2D" type="Polygon2D" parent="origin/trigger"]
 color = Color( 0, 1, 0.0627451, 1 )
