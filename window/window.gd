@@ -10,6 +10,8 @@ export(int) var angle_open = -90
 var busy = false
 var playerPresent = false
 
+onready var stream_end_collider = $Stream/end/StaticBody2D/CollisionShape2D
+
 func _ready():
 	$Stream.enabled = open
 	$origin/trigger/Polygon2D.color = color_open if open else color_closed
@@ -26,6 +28,7 @@ func _process(delta):
 		busy = true
 		open = !open
 		$Stream.enabled = open
+		stream_end_collider.disabled = !open
 
 		var player = get_parent().get_node("Player")
 		if open:
