@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://CameraCrane/camera_crane.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CameraCrane/camera_area.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CameraArea3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 89.135, 654.217 )
+scale = Vector2( 12.413, 6.28661 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="CameraArea2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 844.545, 342.413 )
+scale = Vector2( 6.33544, 7.07657 )
+
+[node name="CameraArea" parent="." instance=ExtResource( 3 )]
+position = Vector2( 183.6, 117.053 )
+scale = Vector2( 10.0554, 7.07657 )
+
+[node name="CameraCrane" parent="." instance=ExtResource( 2 )]
+camera_node = NodePath("../Camera2D")
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -48.175, 75.4286 )
