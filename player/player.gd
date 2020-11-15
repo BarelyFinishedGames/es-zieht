@@ -55,6 +55,8 @@ func _physics_process(delta):
 	
 	move_and_collide(direction.normalized() * velocity * delta)
 	
+	force = Vector2()
+	
 func get_degrees(vector) -> float:
 	return atan2(vector.y, vector.x)*180/PI
 
