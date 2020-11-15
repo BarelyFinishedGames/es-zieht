@@ -43,6 +43,12 @@ func _physics_process(delta):
 	else:
 		$Sprite.stop()
 	
+	if direction.length() != 0 and !$Step.playing and !dragging:
+		$Step.play()
+	
+	if direction.length() != 0 and !$Drag.playing and dragging:
+		!$Drag.play()
+	
 	direction += force
 	
 	var allow_turn = true
