@@ -35,7 +35,6 @@ texture = ExtResource( 5 )
 
 [node name="Window" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1152, -744 )
-open = false
 angle_open = 90
 
 [node name="Stream" parent="Window" index="0"]
