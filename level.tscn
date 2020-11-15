@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://stream/stream.tscn" type="PackedScene" id=2]
 [ext_resource path="res://box/box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://window/window.tscn" type="PackedScene" id=4]
+[ext_resource path="res://level_transition/level_transition.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tutorial.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,3 +28,19 @@ position = Vector2( 722.413, 93.4265 )
 
 [node name="Box2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 366.433, 198.313 )
+
+[node name="LevelTransition" parent="." instance=ExtResource( 5 )]
+position = Vector2( 9.44476, 541.814 )
+scale = Vector2( 2.5, 2.5 )
+scene = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="LevelTransition"]
+margin_left = 0.0272276
+margin_top = -14.6044
+margin_right = 81.0272
+margin_bottom = 16.3956
+text = "Zum
+Tutorial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
