@@ -37,12 +37,22 @@ func _physics_process(delta):
 
 	if direction.length() != 0:
 		$Sprite.play("run")
-		$Sprite.rotation_degrees = get_degrees(direction)
-		$CollisionShape2D.rotation_degrees = get_degrees(direction)
 	else:
 		$Sprite.stop()
 	
 	direction += force
+	
+	var allow_turn = true
+	
+	for area in $CollisionShape2D/Area2D.get_overlapping_areas():
+		if area.get_parent() != null and area.get_parent().has_method("is_stream"):
+			if $CollisionShape2D/Area2D.overlaps_body(area.get_parent().get_node("end/StaticBody2D")):
+				allow_turn = false
+	
+	if direction.length() != 0 and allow_turn:
+		$Sprite.rotation_degrees = get_degrees(direction)
+		$CollisionShape2D.rotation_degrees = get_degrees(direction)
+	
 	move_and_collide(direction.normalized() * velocity * delta)
 	
 func get_degrees(vector) -> float:
@@ -51,7 +61,6 @@ func get_degrees(vector) -> float:
 
 func _on_Slide_tween_started(object, key):
 	can_move = false;
-
 
 func _on_Slide_tween_all_completed():
 	can_move = true;

@@ -4,6 +4,7 @@
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 [ext_resource path="res://assets/player/player-straight.png" type="Texture" id=3]
 [ext_resource path="res://assets/player/player-left.png" type="Texture" id=4]
+[ext_resource path="res://player/player.tres" type="Shape2D" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,9 +13,6 @@ animations = [ {
 "name": "run",
 "speed": 5.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 29.1216, 29.4078 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -28,7 +26,12 @@ animation = "run"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.72, 0.336 )
 scale = Vector2( 0.5, 1.06 )
-shape = SubResource( 2 )
+shape = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="CollisionShape2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
+shape = ExtResource( 5 )
 
 [node name="Slide" type="Tween" parent="."]
 [connection signal="tween_all_completed" from="Slide" to="." method="_on_Slide_tween_all_completed"]
