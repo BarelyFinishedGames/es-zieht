@@ -33,6 +33,7 @@ func _process(_delta):
 		call_deferred("set_position", playerOffset)
 
 		attached = true
+		player.dragging = true
 		number_of_fake_enterings = 3
 
 	if not Input.is_action_pressed("push") and attached:
@@ -43,6 +44,7 @@ func _process(_delta):
 		set_position(pos)
 
 		attached = false
+		player.dragging = false
 
 		collision_layer = BOX_DETECTION_LAYER | PLAYER_COLLISION_LAYER
 		collision_mask = BOX_DETECTION_LAYER | PLAYER_COLLISION_LAYER
