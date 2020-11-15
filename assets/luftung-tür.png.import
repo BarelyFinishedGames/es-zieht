@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Element 83.png-3726c64e36152cd901860b0b6b383dc7.stex"
+path="res://.import/luftung-tür.png-5c16218f85a8a76daf95503b0129a661.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/Element 83.png"
-dest_files=[ "res://.import/Element 83.png-3726c64e36152cd901860b0b6b383dc7.stex" ]
+source_file="res://assets/luftung-tür.png"
+dest_files=[ "res://.import/luftung-tür.png-5c16218f85a8a76daf95503b0129a661.stex" ]
 
 [params]
 
