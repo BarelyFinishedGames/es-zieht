@@ -1,5 +1,7 @@
 extends Node2D
 
+const Wind = preload("res://stream/wind.tscn")
+
 onready var ray = $begin/BoxDetector
 onready var areaShape = $Area2D/CollisionShape2D
 onready var direction = ($end.get_global_position() - $begin.get_global_position()).normalized()
@@ -15,7 +17,19 @@ var player = null
 func is_stream() -> bool:
 	return true
 
+func _ready():
+	$Timer.start()
+
 func _physics_process(delta):
+
+	var length = ($end.position - $begin.position).length()
+
+	for c in get_children():
+		if c.has_method("is_wind"):
+			var dist = (c.position - $begin.position).length()
+			
+			if dist >= length:
+				c.queue_free()
 
 	if player != null:
 		player.force += direction * power
@@ -28,7 +42,6 @@ func _physics_process(delta):
 			var pos = ray.get_collision_point()
 			$end.global_position = pos
 
-			var length = ($end.position - $begin.position).length()
 			var oldExtents = areaShape.shape.get_extents()
 
 			areaShape.shape.set_extents(Vector2(oldExtents.x,length / 2))
@@ -84,3 +97,13 @@ func _on_Area2D_body_entered(other):
 func _on_Area2D_body_exited(other):
 	if other.has_method("is_player"):
 		player = null
+
+func _on_Timer_timeout():
+	if enabled:
+		var scale = get_parent().get_scale()
+		
+		var wind = Wind.instance()
+		wind.position = $begin.position
+		wind.set_scale(Vector2(1/scale.x, 1/scale.y))
+		wind.maxDist = ($end.position - $begin.position).length()
+		add_child(wind)
