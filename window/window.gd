@@ -13,8 +13,7 @@ onready var stream_end_collider = $Stream/end/StaticBody2D/CollisionShape2D
 func _ready():
 	$Stream.enabled = open
 
-
-	$origin.rotation_degrees = angle_open
+	$origin.rotation_degrees = angle_open if open else 0
 	
 func _on_trigger_body_entered(other):
 	if other.has_method("is_player"):
