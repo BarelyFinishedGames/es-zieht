@@ -32,9 +32,11 @@ texture = ExtResource( 3 )
 position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
-[node name="noyoucantwalkhere" type="StaticBody2D" parent="."]
+[node name="noyoucantwalkhere" type="StaticBody2D" parent="origin"]
+position = Vector2( -40, -10 )
+scale = Vector2( 1, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="noyoucantwalkhere"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="origin/noyoucantwalkhere"]
 position = Vector2( 0, 5 )
 shape = SubResource( 2 )
 
