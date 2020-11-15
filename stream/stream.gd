@@ -36,7 +36,7 @@ func _physics_process(delta):
 
 			# if the box that currently block the airflow is attached to
 			# the player, the exploit prevention collider prevents them from walking through
-			if other.attached:
+			if other.attached: and enabled:
 				$walkthroughPrevention.collision_layer = 1
 				$walkthroughPrevention.collision_mask = 1
 			else:
