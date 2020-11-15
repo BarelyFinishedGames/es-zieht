@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -16,12 +16,15 @@
 [ext_resource path="res://CameraCrane/camera_area.tscn" type="PackedScene" id=14]
 [ext_resource path="res://level_transition/level_transition.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ui/mainmenu.tscn" type="PackedScene" id=16]
+[ext_resource path="res://level1.gd" type="Script" id=17]
+[ext_resource path="res://ui/reset.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
 extents = Vector2( 40, 100 )
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 17 )
 
 [node name="LevelTransition" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3200, 1096 )
@@ -236,8 +239,12 @@ current = true
 zoom = Vector2( 2.9, 2.9 )
 
 [node name="TextureButton" type="TextureButton" parent="Camera2D"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 3672.0
+margin_top = 1944.0
+margin_right = 3798.0
+margin_bottom = 2098.0
+rect_scale = Vector2( 2.2, 2.2 )
+texture_normal = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
