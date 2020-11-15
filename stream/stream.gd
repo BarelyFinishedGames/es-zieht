@@ -6,10 +6,12 @@ onready var direction = ($end.get_global_position() - $begin.get_global_position
 
 onready var originalEndPosition = $end.position
 
-
 export(float) var power = 2
 
 export(bool) var enabled = true
+
+func is_stream() -> bool:
+	return true
 
 func _physics_process(delta):
 
