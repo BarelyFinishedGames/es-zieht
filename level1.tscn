@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,11 @@
 [ext_resource path="res://assets/aktenschrank.png" type="Texture" id=8]
 [ext_resource path="res://door/door.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/luftung-tür.png" type="Texture" id=10]
+[ext_resource path="res://stream/stream.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 40, 100 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -172,6 +177,13 @@ scale = Vector2( 1, 2.9 )
 [node name="Polygon2D" parent="Window6/origin/trigger" index="0"]
 rotation = 3.14159
 
+[node name="Stream" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2648, 2688 )
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="Stream/Area2D" index="0"]
+shape = SubResource( 1 )
+
 [editable path="Node2D"]
 
 [editable path="Window"]
@@ -187,3 +199,5 @@ rotation = 3.14159
 [editable path="Window5"]
 
 [editable path="Window6"]
+
+[editable path="Stream"]
