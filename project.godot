@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="lüften300"
-run/main_scene="res://level1.tscn"
+run/main_scene="res://tutorial.tscn"
 config/icon="res://player/player.png"
+
+[autoload]
+
+Music="*res://music/music.tscn"
 
 [input]
 
