@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/eszieht1.2.ogg-b611bde0678103b85128f240f3dc322d.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/eszieht1.2.ogg"
+dest_files=[ "res://.import/eszieht1.2.ogg-b611bde0678103b85128f240f3dc322d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

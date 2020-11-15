@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/türÖffnen.wav-ace72e394a763c2c4fbefb8e99d6828b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/türÖffnen.wav"
+dest_files=[ "res://.import/türÖffnen.wav-ace72e394a763c2c4fbefb8e99d6828b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

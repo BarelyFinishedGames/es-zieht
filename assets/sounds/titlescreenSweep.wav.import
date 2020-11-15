@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/titlescreenSweep.wav-99fac163c04ef1b95b33696ecac697fb.sample"
+
+[deps]
+
+source_file="res://assets/sounds/titlescreenSweep.wav"
+dest_files=[ "res://.import/titlescreenSweep.wav-99fac163c04ef1b95b33696ecac697fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

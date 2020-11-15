@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fensterÖffnen.wav-24cc22bae199542db6483c9d74f2cb89.sample"
+
+[deps]
+
+source_file="res://assets/sounds/fensterÖffnen.wav"
+dest_files=[ "res://.import/fensterÖffnen.wav-24cc22bae199542db6483c9d74f2cb89.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
