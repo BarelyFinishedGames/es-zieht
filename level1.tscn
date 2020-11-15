@@ -19,7 +19,6 @@ tile_data = PoolIntArray( 2, 5, 0, 3, 38, 0, 4, 5, 0, 131071, 2, 0, 65536, 1, 0,
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 824, 408 )
-scale = Vector2( 2.7, 2.7 )
 velocity = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
