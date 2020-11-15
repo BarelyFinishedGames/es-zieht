@@ -31,14 +31,17 @@ func _process(delta):
 		if open:
 			$Stream._on_Area2D_body_entered(player)
 
-
 			rotate(angle_open)
 
 		else:
 			player.force = Vector2(0,0)
 
-
 			rotate(0)
+		
+		if open:
+			$WindowOpen.play()
+		else: 
+			$WindowClosed.play()
 
 func rotate(new):
 	$Tween.interpolate_property($origin, "rotation_degrees",
