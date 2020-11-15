@@ -19,7 +19,7 @@ script = ExtResource( 2 )
 velocity = 200.0
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.08, 0.08 )
+scale = Vector2( 0.216, 0.216 )
 frames = SubResource( 1 )
 animation = "run"
 
@@ -31,7 +31,7 @@ shape = ExtResource( 5 )
 [node name="Area2D" type="Area2D" parent="CollisionShape2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
-position = Vector2( 0.0221248, 0.0670839 )
+position = Vector2( 2.63539, -0.921149 )
 shape = ExtResource( 5 )
 
 [node name="Slide" type="Tween" parent="."]
