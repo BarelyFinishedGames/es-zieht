@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilemap/tilemap.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://door/door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://level_transition/level_transition.tscn" type="PackedScene" id=8]
 [ext_resource path="res://level1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://CameraCrane/camera_area.tscn" type="PackedScene" id=10]
+[ext_resource path="res://CameraCrane/camera_crane.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,10 +23,6 @@ tile_data = PoolIntArray( -196611, 5, 0, -196610, 5, 0, -196609, 5, 0, -262144, 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 144, 384 )
 velocity = 500.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-zoom = Vector2( 2.5, 2.5 )
 
 [node name="Box" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1448, 672 )
@@ -95,6 +93,29 @@ scale = Vector2( 3.15, 3.15 )
 position = Vector2( 640, 1712 )
 scale = Vector2( 2.5, 1 )
 scene = ExtResource( 9 )
+
+[node name="CameraArea" parent="." instance=ExtResource( 10 )]
+position = Vector2( 896, -32 )
+scale = Vector2( 8, 17.6 )
+camera_crane = NodePath("../CameraCrane")
+
+[node name="CameraCrane" parent="." instance=ExtResource( 11 )]
+camera_node = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -400, 432 )
+current = true
+zoom = Vector2( 2.5, 2.5 )
+
+[node name="CameraArea2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2000, 624 )
+scale = Vector2( 6.3, 8.2 )
+camera_crane = NodePath("../CameraCrane")
+
+[node name="CameraArea3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1200, 1416 )
+scale = Vector2( 26.7, 5.6 )
+camera_crane = NodePath("../CameraCrane")
 
 [editable path="Node2D"]
 
