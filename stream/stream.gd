@@ -17,7 +17,8 @@ func _physics_process(delta):
 
 	if ray.is_colliding():
 		var other = ray.get_collider() as Node2D
-		if other.has_method("is_box"):
+
+		if other.name.replace("@", "").begins_with("Box"): #apparently sometimes nodes are prefixed with @ by godot at runtime ¯\_(ツ)_/¯
 
 			var pos = ray.get_collision_point()
 			$end.global_position = pos
@@ -28,6 +29,15 @@ func _physics_process(delta):
 			areaShape.shape.set_extents(Vector2(oldExtents.x,length / 2))
 			areaShape.position.y -= oldExtents.y - length / 2
 
+			# if the box that currently block the airflow is attached to
+			# the player, the exploit prevention collider prevents them from walking through
+			if other.attached:
+				$walkthroughPrevention.collision_layer = 1
+				$walkthroughPrevention.collision_mask = 1
+			else:
+				$walkthroughPrevention.collision_layer = 0
+				$walkthroughPrevention.collision_mask = 0
+			
 		else:
 			reset()
 
