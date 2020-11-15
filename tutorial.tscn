@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilemap/tilemap.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://box/box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/aktenschrank.png" type="Texture" id=5]
 [ext_resource path="res://assets/luftung-tür.png" type="Texture" id=6]
+[ext_resource path="res://door/door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://level_transition/level_transition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://level1.tscn" type="PackedScene" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -44,6 +47,9 @@ position = Vector2( -38.4001, 9.60004 )
 [node name="trigger" parent="Window/origin" index="0"]
 position = Vector2( 38.4, 0 )
 
+[node name="noyoucantwalkhere" parent="Window/origin" index="1"]
+position = Vector2( 38.4001, -3.20004 )
+
 [node name="Window2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1304, 896 )
 rotation = -1.5708
@@ -64,6 +70,9 @@ rotation = 1.5708
 scale = Vector2( 0.05, 0.015 )
 texture = ExtResource( 6 )
 
+[node name="CollisionShape2D" parent="Window2/origin/noyoucantwalkhere" index="0"]
+position = Vector2( 78.4, 10.0001 )
+
 [node name="Window3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1512, 1408 )
 rotation = 1.5708
@@ -77,6 +86,16 @@ texture = ExtResource( 6 )
 [node name="CollisionShape2D" parent="Window3/origin/trigger" index="1"]
 position = Vector2( 6.10352e-05, 10.4166 )
 
+[node name="door" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1024, 1408 )
+rotation = 1.5708
+scale = Vector2( 3.15, 3.15 )
+
+[node name="LevelTransition" parent="." instance=ExtResource( 8 )]
+position = Vector2( 640, 1712 )
+scale = Vector2( 2.5, 1 )
+scene = ExtResource( 9 )
+
 [editable path="Node2D"]
 
 [editable path="Box"]
@@ -86,3 +105,5 @@ position = Vector2( 6.10352e-05, 10.4166 )
 [editable path="Window2"]
 
 [editable path="Window3"]
+
+[editable path="LevelTransition"]

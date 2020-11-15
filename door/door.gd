@@ -9,7 +9,7 @@ var in_shape = false
 var shape
 
 func _process(delta):
-	if shape.get_parent().enabled and in_shape:
+	if in_shape and shape.get_parent().enabled:
 		$Tween.interpolate_property($origin, "rotation_degrees",
 		$origin.rotation_degrees, angle_open, 0.3,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
