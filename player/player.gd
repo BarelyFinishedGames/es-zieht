@@ -8,6 +8,8 @@ var force = Vector2()
 
 var can_move = true;
 
+var dragging = false
+
 func is_player() -> bool:
 	return true
 
@@ -35,7 +37,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("move_right"):
 			direction += Vector2.RIGHT
 
-	if direction.length() != 0:
+	if direction.length() != 0 and not dragging:
 		$Sprite.play("run")
 		turn(direction)
 	else:
@@ -50,7 +52,7 @@ func _physics_process(delta):
 			if $CollisionShape2D/Area2D.overlaps_body(area.get_parent().get_node("end/StaticBody2D")):
 				allow_turn = false
 	
-	if direction.length() != 0 and allow_turn:
+	if direction.length() != 0 and allow_turn and not dragging:
 		turn(direction)
 	
 	move_and_collide(direction.normalized() * velocity * delta)
