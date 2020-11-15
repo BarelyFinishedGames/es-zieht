@@ -15,6 +15,13 @@ func _physics_process(delta):
 
 	direction = Vector2()
 
+	if force.length() == 0:
+		if !can_move:
+			can_move = true;
+	else:
+		if can_move:
+			can_move = false;
+
 	if can_move:
 		if Input.is_action_pressed("move_up"):
 			direction += Vector2.UP
@@ -34,9 +41,6 @@ func _physics_process(delta):
 		$CollisionShape2D.rotation_degrees = get_degrees(direction)
 	else:
 		$Sprite.stop()
-	
-	if force.length() == 0 and !can_move:
-		can_move = true;
 	
 	direction += force
 	move_and_collide(direction.normalized() * velocity * delta)
