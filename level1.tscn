@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Schreibtisch/Schreibtisch_PC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Schreibtisch/Schreibtisch_leer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Schreibtisch/Schreibtisch_voll.tscn" type="PackedScene" id=6]
+[ext_resource path="res://box/box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/aktenschrank.png" type="Texture" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -73,8 +75,18 @@ rotation = 1.5708
 position = Vector2( 1152, 640 )
 rotation = 1.5708
 
+[node name="Box" parent="." instance=ExtResource( 7 )]
+position = Vector2( 616, 864 )
+
+[node name="Sprite" type="Sprite" parent="Box"]
+rotation = 1.5708
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+
 [editable path="Node2D"]
 
 [editable path="Window"]
 
 [editable path="Window2"]
+
+[editable path="Box"]
