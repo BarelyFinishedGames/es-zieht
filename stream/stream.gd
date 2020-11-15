@@ -10,10 +10,15 @@ export(float) var power = 2
 
 export(bool) var enabled = true
 
+var player = null
+
 func is_stream() -> bool:
 	return true
 
 func _physics_process(delta):
+
+	if player != null:
+		player.force += direction * power
 
 	if ray.is_colliding():
 		var other = ray.get_collider() as Node2D
@@ -52,11 +57,10 @@ func reset():
 
 	areaShape.shape.set_extents(Vector2(oldExtents.x,length / 2))
 	areaShape.position.y += length / 2 - oldExtents.y
-	
 
 func _on_Area2D_body_entered(other):
 	if enabled and other.has_method("is_player"):
-		other.force += direction * power
+		player = other
 	
 		var slide = other.get_node("Slide");
 	
@@ -79,4 +83,4 @@ func _on_Area2D_body_entered(other):
 
 func _on_Area2D_body_exited(other):
 	if other.has_method("is_player"):
-		other.force = Vector2()
+		player = null
