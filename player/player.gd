@@ -37,6 +37,7 @@ func _physics_process(delta):
 
 	if direction.length() != 0:
 		$Sprite.play("run")
+		turn(direction)
 	else:
 		$Sprite.stop()
 	
@@ -50,14 +51,16 @@ func _physics_process(delta):
 				allow_turn = false
 	
 	if direction.length() != 0 and allow_turn:
-		$Sprite.rotation_degrees = get_degrees(direction)
-		$CollisionShape2D.rotation_degrees = get_degrees(direction)
+		turn(direction)
 	
 	move_and_collide(direction.normalized() * velocity * delta)
 	
 func get_degrees(vector) -> float:
 	return atan2(vector.y, vector.x)*180/PI
 
+func turn(vecor):
+	$Sprite.rotation_degrees = get_degrees(direction)
+	$CollisionShape2D.rotation_degrees = get_degrees(direction)
 
 func _on_Slide_tween_started(object, key):
 	can_move = false;
