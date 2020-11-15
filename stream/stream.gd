@@ -47,6 +47,25 @@ func reset():
 func _on_Area2D_body_entered(other):
 	if enabled and other.has_method("is_player"):
 		other.force += direction * power
+	
+		var slide = other.get_node("Slide");
+	
+		if direction.x == 0:
+			#slide in x direction
+
+			if abs($end.get_global_position().y - other.position.y) > 30:
+				slide.interpolate_property(other, "position",
+				other.position, Vector2($end.get_global_position().x, other.position.y), 0.15,
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				slide.start()
+		else:
+			#slide in x direction
+			
+			if abs($end.get_global_position().x - other.position.x) > 30:
+				slide.interpolate_property(other, "position",
+				other.position, Vector2(other.position.x, $end.get_global_position().y), 0.15,
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				slide.start()
 
 func _on_Area2D_body_exited(other):
 	if other.has_method("is_player"):
