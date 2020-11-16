@@ -14,13 +14,25 @@
 [ext_resource path="res://Schreibtisch/Schreibtisch_Lampe.tscn" type="PackedScene" id=12]
 [ext_resource path="res://CameraCrane/camera_crane.tscn" type="PackedScene" id=13]
 [ext_resource path="res://CameraCrane/camera_area.tscn" type="PackedScene" id=14]
-[ext_resource path="res://level_transition/level_transition.tscn" type="PackedScene" id=15]
-[ext_resource path="res://ui/mainmenu.tscn" type="PackedScene" id=16]
 [ext_resource path="res://level1.gd" type="Script" id=17]
 [ext_resource path="res://ui/reset.png" type="Texture" id=18]
 [ext_resource path="res://deko/pflanze.tscn" type="PackedScene" id=19]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+# place this note somwewhere and assign 
+# a destination scene in the inspector
+
+func _on_Area2D_body_entered(other):
+	if other.has_method(\"is_player\"):
+		get_tree().change_scene(\"res://ui/mainmenu.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 49.0075, 14.2238 )
+
+[sub_resource type="RectangleShape2D" id=3]
 resource_local_to_scene = true
 extents = Vector2( 40, 100 )
 
@@ -28,10 +40,15 @@ extents = Vector2( 40, 100 )
 position = Vector2( 384, 488 )
 script = ExtResource( 17 )
 
-[node name="LevelTransition" parent="." instance=ExtResource( 15 )]
+[node name="LevelTransition" type="Node2D" parent="."]
 position = Vector2( 3200, 1096 )
 scale = Vector2( 2.9, 1 )
-scene = ExtResource( 16 )
+script = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="LevelTransition"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition/Area2D"]
+shape = SubResource( 2 )
 
 [node name="Node2D" parent="." instance=ExtResource( 1 )]
 
@@ -192,7 +209,7 @@ rotation = -1.5708
 scale = Vector2( 2.4, 6.4 )
 
 [node name="CollisionShape2D" parent="Stream/Area2D" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Stream2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 3152, 2176 )
@@ -276,6 +293,7 @@ camera_crane = NodePath("../CameraCrane")
 
 [node name="pflanze" parent="." instance=ExtResource( 19 )]
 position = Vector2( -168, 2664 )
+[connection signal="body_entered" from="LevelTransition/Area2D" to="LevelTransition" method="_on_Area2D_body_entered"]
 
 [editable path="Node2D"]
 

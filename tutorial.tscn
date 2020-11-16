@@ -7,13 +7,24 @@
 [ext_resource path="res://assets/aktenschrank.png" type="Texture" id=5]
 [ext_resource path="res://assets/luftung-tür.png" type="Texture" id=6]
 [ext_resource path="res://door/door.tscn" type="PackedScene" id=7]
-[ext_resource path="res://level_transition/level_transition.tscn" type="PackedScene" id=8]
-[ext_resource path="res://level1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://CameraCrane/camera_area.tscn" type="PackedScene" id=10]
 [ext_resource path="res://CameraCrane/camera_crane.tscn" type="PackedScene" id=11]
 [ext_resource path="res://tutorial.gd" type="Script" id=12]
 [ext_resource path="res://ui/reset.png" type="Texture" id=13]
 [ext_resource path="res://deko/pflanze.tscn" type="PackedScene" id=14]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+# place this note somwewhere and assign 
+# a destination scene in the inspector
+
+func _on_Area2D_body_entered(other):
+	if other.has_method(\"is_player\"):
+		get_tree().change_scene(\"res://level1.tscn\")"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 49.0075, 14.2238 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 12 )
@@ -93,10 +104,15 @@ position = Vector2( 1024, 1408 )
 rotation = 1.5708
 scale = Vector2( 3.15, 3.15 )
 
-[node name="LevelTransition" parent="." instance=ExtResource( 8 )]
+[node name="LevelTransition" type="Node2D" parent="."]
 position = Vector2( 640, 1712 )
 scale = Vector2( 2.5, 1 )
-scene = ExtResource( 9 )
+script = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="LevelTransition"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition/Area2D"]
+shape = SubResource( 2 )
 
 [node name="CameraArea" parent="." instance=ExtResource( 10 )]
 position = Vector2( 896, -32 )
@@ -136,6 +152,7 @@ position = Vector2( 80, 632 )
 
 [node name="pflanze2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2096, 1648 )
+[connection signal="body_entered" from="LevelTransition/Area2D" to="LevelTransition" method="_on_Area2D_body_entered"]
 
 [editable path="Node2D"]
 
@@ -146,5 +163,3 @@ position = Vector2( 2096, 1648 )
 [editable path="Window2"]
 
 [editable path="Window3"]
-
-[editable path="LevelTransition"]
